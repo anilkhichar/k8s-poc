@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-k8s-blue-green-deployment
+  labels:
+    name: hello-k8s-blue-green-deployment
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        name: hello-k8s-blue-green-deployment
+    spec:
+      containers:
+      - name: hello-k8s-blue-green-container
+        image: gcr.io/<PROJECT_ID>/imageflipper:2.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

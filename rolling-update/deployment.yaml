@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-k8s-deployment
+  labels:
+    name: hello-k8s-deployment
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        name: hello-k8s-deployment
+    spec:
+      containers:
+      - name: hello-k8s-container
+        image: gcr.io/<PROJECT_ID>/imageflipper:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

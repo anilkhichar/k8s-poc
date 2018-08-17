@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: hello-k8s-deployment
+  labels:
+    name: hello-k8s-deployment
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: hello-k8s-deployment
+    spec:
+      containers:
+      - name: hello-k8s-container
+        image: gcr.io/<PROJECT_ID>/hello-node:v2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: K8S_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: K8S_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flip-microservice-deployment
+  labels:
+    name: flip-microservice-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: flip-microservice-deployment
+    spec:
+      containers:
+      - name: flip-microservice-container
+        image: gcr.io/<PROJECT_ID>/flip-microservice:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
