@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: hello-k8s-container
-        image: gcr.io/<PROJECT_ID>/hello-node:v2
+        image: gcr.io/k8s-demo-nyc/node-hello:2.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -30,3 +30,4 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
+      

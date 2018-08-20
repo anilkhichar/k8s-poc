@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:6
 copy . .
 run npm install --production
 EXPOSE 8080
